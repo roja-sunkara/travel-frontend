@@ -1,0 +1,53 @@
+.chatbot-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 16px;
+    background: #f4f9ff;
+    box-shadow: 0 4px 16px rgba(0, 123, 255, 0.1);
+    text-align: center;
+  }
+  
+  .chatbot-container h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  .chatbot-container textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    resize: none;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    outline: none;
+  }
+  
+  .chatbot-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .chatbot-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .response {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e9f5ff;
+    border-radius: 12px;
+    color: #333;
+    font-weight: 500;
+    text-align: left;
+  }
+  
