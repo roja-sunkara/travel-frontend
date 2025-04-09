@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
 import Navbar from "./components/Navbar";
 import TicketSearch from "./components/TicketSearch";
 import HotelSearch from "./components/HotelSearch";
@@ -20,6 +21,8 @@ function App() {
           <Route path="/hotels" element={<HotelSearch />} />
           <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/contact" element={<Contact />} />
+         
+
         </Routes>
         <Footer /> {/* ✅ Add this just below Routes */}
       </div>
