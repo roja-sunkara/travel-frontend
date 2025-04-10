@@ -1,36 +1,48 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 import TicketSearch from "./components/TicketSearch";
 import HotelSearch from "./components/HotelSearch";
 import Chatbot from "./components/Chatbot";
 import Contact from "./components/Contact";
-import Home from "./components/Home";
-import Footer from "./components/Footer"; // ✅ Add this
+import Login from "./components/Login";
+import Register from "./components/Register";
+import ProtectedRoute from "./ProtectedRoute"; // ✅ Import this
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Navbar />
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tickets" element={<TicketSearch />} />
-          <Route path="/hotels" element={<HotelSearch />} />
-          <Route path="/chatbot" element={<Chatbot />} />
-          <Route path="/contact" element={<Contact />} />
-         
-
-        </Routes>
-        <Footer /> {/* ✅ Add this just below Routes */}
-      </div>
-    </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={
+          <ProtectedRoute>
+            <TicketSearch />
+          </ProtectedRoute>
+        } />
+        <Route path="/hotels" element={
+          <ProtectedRoute>
+            <HotelSearch />
+          </ProtectedRoute>
+        } />
+        <Route path="/chatbot" element={
+          <ProtectedRoute>
+            <Chatbot />
+          </ProtectedRoute>
+        } />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+
+
+
 
 
 

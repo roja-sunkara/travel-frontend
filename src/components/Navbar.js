@@ -1,21 +1,46 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
+  const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  const handleLogout = async () => {
+    try {
+      await fetch("https://travel-backend-uqyt.onrender.com/logout", {
+        method: "GET",
+        credentials: "include"
+      });
+      localStorage.removeItem("isLoggedIn");
+      navigate("/login");
+    } catch (err) {
+      console.error("Logout error:", err);
+    }
+  };
+
   return (
-    <nav className="navbar">
-      <h2>✈️ Travel Assistant</h2>
-      <div className="links">
-        <Link to="/">Home</Link>
-        <Link to="/tickets">Tickets</Link>
-        <Link to="/hotels">Hotels</Link>
-        <Link to="/chatbot">Chatbot</Link>
-        <Link to="/contact">Contact</Link>
+    <div className="navbar">
+      <div className="navbar-logo">
+        <Link to="/">Travel Assistant</Link>
       </div>
-    </nav>
+      <div className="navbar-links">
+        <Link to="/">Home</Link>
+        <Link to="/contact">Contact</Link>
+        {isLoggedIn ? (
+          <>
+            <span className="navbar-user">👤 Logged In</span>
+            <button className="logout-button" onClick={handleLogout}>Logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </>
+        )}
+      </div>
+    </div>
   );
 }
 
 export default Navbar;
-

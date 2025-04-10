@@ -1,65 +1,144 @@
-.App {
-  text-align: center;
-  font-family: 'Segoe UI', sans-serif;
-  padding: 30px;
-  background-color: #f9f9f9;
-  min-height: 100vh;
-}
-
-.ticket-search {
-  margin-top: 20px;
-}
-
-.ticket-search input {
-  margin: 10px 5px;
-  padding: 10px;
-  width: 220px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: 0.3s ease;
-}
-
-.ticket-search input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-}
-
-.ticket-search button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  font-weight: bold;
-  border: none;
-  margin-top: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.ticket-search button:hover {
-  background-color: #0056b3;
-}
-
-.ticket-card {
-  background-color: #ffffff;
-  border: 1px solid #eee;
-  margin: 15px auto;
-  padding: 15px 20px;
-  max-width: 450px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  text-align: left;
-}
-
-.ticket-card h3 {
-  margin-bottom: 8px;
-  color: #333;
-}
-
-.ticket-card p {
+/* Global Styles */
+body {
   margin: 0;
-  color: #555;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #e0f7fa);
+  color: #2c3e50;
+  overflow-x: hidden;
 }
 
+h1, h2, h3 {
+  font-weight: 700;
+  color: #1b3c5d;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(to right, #00695c, #004d40);
+  padding: 18px 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar a {
+  color: #ffffff;
+  margin-left: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #ffeb3b;
+}
+
+/* Home Section */
+.home {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(to bottom right, #ffffff, #b2dfdb);
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.home h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  color: #004d40;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.home p {
+  font-size: 1.4rem;
+  color: #444;
+  max-width: 750px;
+  margin: 0 auto 35px;
+}
+
+.home button {
+  background-color: #009688;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 150, 136, 0.2);
+}
+
+.home button:hover {
+  background-color: #00796b;
+  transform: scale(1.05);
+}
+
+/* Cards Section */
+.section {
+  padding: 70px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  background: #f9fbe7;
+}
+
+.card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+  color: #00796b;
+  font-size: 1.3rem;
+  margin-top: 0;
+}
+
+.card p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Footer */
+.footer {
+  background-color: #004d40;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+  font-size: 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

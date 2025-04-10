@@ -1,32 +1,69 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1e3a8a;
-    padding: 10px 20px;
-    color: white;
-  }
-  
-  .navbar h1 {
-    font-size: 24px;
-    margin: 0;
-  }
-  
-  .navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    margin: 0;
-  }
-  
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar a:hover {
-    color: #ffdd57;
-  }
-  
+  background-color: #00695c;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo a {
+  color: white;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar-logo a:hover {
+  color: #ffd54f;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links a {
+  margin-left: 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #ffd54f;
+}
+
+/* ✅ User greeting style */
+.navbar-user {
+  margin-left: 25px;
+  font-weight: 500;
+  color: #ffecb3;
+  font-size: 1rem;
+}
+
+/* ✅ Logout button style */
+.logout-button {
+  margin-left: 20px;
+  padding: 6px 14px;
+  font-weight: 600;
+  border: none;
+  background-color: #ffd180;
+  color: #004d40;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.logout-button:hover {
+  background-color: #ffe0b2;
+  transform: scale(1.05);
+}
+

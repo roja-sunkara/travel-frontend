@@ -1,17 +1,13 @@
-// Hotel.js
 import React, { useState } from 'react';
-import config from '../config'; // ✅ Import config.js
+import config from '../config'; // ✅ Importing backend URL
 
-const Hotel = () => {
+const HotelSearch = () => {
   const [city, setCity] = useState('');
   const [hotels, setHotels] = useState([]);
 
   const handleSearch = () => {
-    fetch(`${config.backendUrl}/search_hotels`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ city })
-    })
+    // ✅ Use GET request with query parameter
+    fetch(`${config.backendUrl}/search_hotels?city=${city}`)
       .then((res) => res.json())
       .then((data) => setHotels(data.hotels || []))
       .catch((err) => console.error("Error fetching hotels:", err));
@@ -36,12 +32,14 @@ const Hotel = () => {
 
       <ul className="mt-4">
         {hotels.map((hotel, index) => (
-          <li key={index} className="p-2 border-b">{hotel}</li>
+          <li key={index} className="p-2 border-b">
+            {hotel.name} - Rs.{hotel.price}
+          </li>
         ))}
       </ul>
     </div>
   );
 };
 
-export default Hotel;
+export default HotelSearch;
 
