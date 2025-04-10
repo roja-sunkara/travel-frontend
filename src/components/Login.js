@@ -13,7 +13,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://travel-backend-uqyt.onrender.com/login', {
+      const res = await axios.post("https://travel-backend-uqyt.onrender.com/login", ..., {
         email,
         password,
       }, { withCredentials: true });

@@ -12,7 +12,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://travel-backend-uqyt.onrender.com/register', {
+      const res = await axios.post("https://travel-backend-uqyt.onrender.com/login", ..., {
         email,
         password,
       });
