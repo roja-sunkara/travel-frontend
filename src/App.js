@@ -1,14 +1,16 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import TicketSearch from "./components/TicketSearch";
-import HotelSearch from "./components/HotelSearch";
-import Chatbot from "./components/Chatbot";
-import Contact from "./components/Contact";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import ProtectedRoute from "./ProtectedRoute"; // ✅ Import this
+// src/App.js
+import React from 'react';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-defaulticon-compatibility';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import TicketSearch from './components/TicketSearch';
+import HotelSearch from './components/HotelSearch';
+import Chatbot from './components/Chatbot';
+import Contact from './components/Contact';
+import GPSNavigation from './components/GPSNavigation';
 
 function App() {
   return (
@@ -16,37 +18,14 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search" element={
-          <ProtectedRoute>
-            <TicketSearch />
-          </ProtectedRoute>
-        } />
-        <Route path="/hotels" element={
-          <ProtectedRoute>
-            <HotelSearch />
-          </ProtectedRoute>
-        } />
-        <Route path="/chatbot" element={
-          <ProtectedRoute>
-            <Chatbot />
-          </ProtectedRoute>
-        } />
+        <Route path="/search" element={<TicketSearch />} />
+        <Route path="/hotels" element={<HotelSearch />} />
+        <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/gps" element={<GPSNavigation />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-

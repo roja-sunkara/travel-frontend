@@ -1,31 +1,51 @@
-// src/components/Chatbot.js
-import React, { useState } from "react";
-import "./Chatbot.css"; // Optional if you want custom styles
+import React, { useState, useRef, useEffect } from "react";
+import "./Chatbot.css";
+import config from '../config';
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const sendMessage = async () => {
-    if (!input.trim()) return;
+    const message = input.trim();
+    if (!message || loading) return;
 
-    const userMessage = { text: input, sender: "user" };
-    setMessages([...messages, userMessage]);
+    const userMessage = { text: message, sender: "user" };
+    setMessages(prev => [...prev, userMessage]);
     setInput("");
+    setLoading(true);
 
     try {
-      const response = await fetch("https://travel-backend-uqyt.onrender.com/chatbot", {
+      const response = await fetch(`${config.backendUrl}/api/Chatbot`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ message }),
       });
 
+      if (!response.ok) throw new Error('Network response was not ok');
+      
       const data = await response.json();
       const botMessage = { text: data.reply, sender: "bot" };
-      setMessages((prev) => [...prev, botMessage]);
+      setMessages(prev => [...prev, botMessage]);
     } catch (error) {
-      const errorMsg = { text: "Error connecting to chatbot.", sender: "bot" };
-      setMessages((prev) => [...prev, errorMsg]);
+      console.error("Chatbot error:", error);
+      const errorMsg = { 
+        text: "Sorry, I'm having trouble connecting. Please try again later.", 
+        sender: "bot" 
+      };
+      setMessages(prev => [...prev, errorMsg]);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -35,28 +55,37 @@ const Chatbot = () => {
 
   return (
     <div className="chatbot-container">
-      <h2>Travel Assistant Chatbot</h2>
+      <h2>Travel Assistant</h2>
       <div className="chat-window">
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
             {msg.text}
           </div>
         ))}
+        {loading && (
+          <div className="message bot">
+            <div className="typing-indicator">
+              <span>.</span><span>.</span><span>.</span>
+            </div>
+          </div>
+        )}
+        <div ref={messagesEndRef} />
       </div>
-      <div className="input-section">
+      <div className="input-area">
         <input
           type="text"
-          placeholder="Ask me anything..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
+          placeholder="Ask about travel destinations, hotels, or tickets..."
+          disabled={loading}
         />
-        <button onClick={sendMessage}>Send</button>
+        <button onClick={sendMessage} disabled={!input.trim() || loading}>
+          {loading ? "Sending..." : "Send"}
+        </button>
       </div>
     </div>
   );
 };
 
 export default Chatbot;
-
-

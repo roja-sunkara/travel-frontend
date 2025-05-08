@@ -1,27 +1,129 @@
-.ticket-search input {
-    margin: 5px;
-    padding: 8px;
-    width: 200px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  .ticket-search button {
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    margin-top: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .ticket-card {
-    border: 1px solid #eee;
-    margin: 10px auto;
-    padding: 10px;
-    max-width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #eee;
-  }
-  
+.ticket-search-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.ticket-search-container h2 {
+  color: #00695c;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.search-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-controls input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.search-controls button {
+  background-color: #00897b;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.search-controls button:hover {
+  background-color: #00695c;
+}
+
+.tickets-list {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.ticket-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+
+.ticket-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ticket-header h3 {
+  margin: 0;
+  color: #00897b;
+  font-size: 1.2rem;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #e53935;
+}
+
+.ticket-route {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.seats {
+  color: #388e3c;
+  font-weight: 600;
+}
+
+.ticket-timing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.ticket-timing div {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-timing span {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.ticket-timing strong {
+  font-size: 1rem;
+  color: #333;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 2rem;
+  color: #00897b;
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: #e53935;
+  background: #ffebee;
+  border-radius: 8px;
+}
